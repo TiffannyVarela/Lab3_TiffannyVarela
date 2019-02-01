@@ -273,17 +273,22 @@ public class Lab3_TiffannyVarela {
                         switch (proyec) {
 
                             case 1:
-                                String dise;
+                                String dise="";
                                 for (int i = 0; i < cn.getPersonas().size(); i++) {
                                     if (((Desarrollador_web) cn.getPersonas().get(i)) instanceof Desarrollador_web) {
                                         System.out.println(cn.getPersonas().indexOf(i) + " = " + cn.getPersonas().get(i));
                                     }
                                 }
-
                                 System.out.println("Ingrese la posicion del desarrollador web que desea");
                                 pos = r.nextInt();
-                                
-                                pro_w.getweb().add(new Proyecto_web(nombre, empresa, precio, estado, descripcion, f_salida, f_entrada, estado));
+                                for (int i = 0; i < cn.getPersonas().size(); i++) {
+                                    if (((Desarrollador_web) cn.getPersonas().get(i)) instanceof Desarrollador_web) {
+                                        if (pos==i) {
+                                            dise+=cn.getPersonas().indexOf(i) + " = " + cn.getPersonas().get(i);
+                                        }
+                                    }
+                                }
+                                pro_w.getweb().add(new Proyecto_web(nombre, empresa, precio, estado, descripcion, f_salida, f_entrada, dise));
                                 break;
 
                             case 2:
@@ -291,25 +296,42 @@ public class Lab3_TiffannyVarela {
                                 for (int i = 0; i < cn.getPersonas().size(); i++) {
                                     if (((Disenador_grafico) cn.getPersonas().get(i)) instanceof Disenador_grafico || ((Fotografo) cn.getPersonas().get(i)) instanceof Fotografo || ((Medios_audiovisuales) cn.getPersonas().get(i)) instanceof Medios_audiovisuales) {
                                         System.out.println(cn.getPersonas().indexOf(i) + " = " + cn.getPersonas().get(i));
+                                        
                                     }
                                 }
-
                                 System.out.println("Ingrese la posicion del freelancer que desea");
                                 pos = r.nextInt();
-                                //pro_p.getPublicitario().add(new Proyecto_publicitario(nombre, empresa, precio, estado, descripcion, f_salida, f_entrada, url));
+                                for (int i = 0; i < cn.getPersonas().size(); i++) {
+                                    if (((Disenador_grafico) cn.getPersonas().get(i)) instanceof Disenador_grafico || ((Fotografo) cn.getPersonas().get(i)) instanceof Fotografo || ((Medios_audiovisuales) cn.getPersonas().get(i)) instanceof Medios_audiovisuales) {
+                                        if (pos==i) {
+                                        free+=cn.getPersonas().indexOf(i) + " = " + cn.getPersonas().get(i);
+                                        }
+                                    }
+                                }
+                                
+                                pro_p.getPublicitario().add(new Proyecto_publicitario(nombre, empresa, precio, estado, descripcion, f_salida, f_entrada, free));
 
                                 break;
 
                             case 3:
+                                String free2="";
                                 for (int i = 0; i < cn.getPersonas().size(); i++) {
                                     if (((Contador) cn.getPersonas().get(i)) instanceof Contador || ((Marketing) cn.getPersonas().get(i)) instanceof Marketing) {
                                         System.out.println(cn.getPersonas().indexOf(i) + " = " + cn.getPersonas().get(i));
                                     }
                                 }
-
                                 System.out.println("Ingrese la posicion del freelancer que desea");
                                 pos = r.nextInt();
-                                //pro_c.getcomercial().add(new Proyecto_comercial(nombre, empresa, precio, estado, descripcion, f_salida, f_entrada, free));
+                                for (int i = 0; i < cn.getPersonas().size(); i++) {
+                                    if (((Contador) cn.getPersonas().get(i)) instanceof Contador || ((Marketing) cn.getPersonas().get(i)) instanceof Marketing) {
+                                        if(pos==i){
+                                        free2+=cn.getPersonas().indexOf(i) + " = " + cn.getPersonas().get(i);
+                                        }
+                                    }
+                                }
+
+                                
+                                pro_c.getcomercial().add(new Proyecto_comercial(nombre, empresa, precio, estado, descripcion, f_salida, f_entrada, free2));
 
                                 break;
 
@@ -333,7 +355,7 @@ public class Lab3_TiffannyVarela {
                     if (valid_empresa(bp, correoi, contrai)==true) {
                         System.out.println("Proyecto Web\n");
                         for (int i = 0; i < proyectos.size(); i++) {
-                            if (((Disenador_grafico) cn.getPersonas().get(i)) instanceof Disenador_grafico || ((Fotografo) cn.getPersonas().get(i)) instanceof Fotografo || ((Medios_audiovisuales) cn.getPersonas().get(i)) instanceof Medios_audiovisuales) {
+                            if (proyectos.get()) {
                                 System.out.println(cn.getPersonas().indexOf(i) + " = " + cn.getPersonas().get(i));
                             }
                         }
@@ -443,10 +465,6 @@ public class Lab3_TiffannyVarela {
                     break;
 
                 case 10:
-                    String P = "",
-                     E = "",
-                     PER = "",
-                     I = "";
                     System.out.println("Proyectos\n");
                     for (int i = 0; i < proyectos.size(); i++) {
                         System.out.println(proyectos);
@@ -494,45 +512,7 @@ public class Lab3_TiffannyVarela {
         return opc3 = r.nextInt();
     }
 
-    public static String texto(String nombre) {
-        while (nombre.matches("([a-z]|[A-Z]|\\s)+") == false) {
-            System.out.println("Vuelva a ingresar el TEXTO");
-            nombre = r.next();
-        }
-        return nombre;
-    }
-
-    public static int num(int numero) {
-        while (numero < 0) {
-            System.out.println("Vuelva a ingresar el NUMERO debe ser mayor a 0");
-            numero = r.nextInt();
-        }
-        while (Integer.toString(numero).matches("^[0-9]+$") == false) {
-            System.out.println("Vuelva a ingresar el NUMERO");
-            numero = r.nextInt();
-        }
-        return numero;
-    }
-
-    public static double dec(double decimal) {
-        while (decimal < 0) {
-            System.out.println("Vuelva a ingresar el NUMERO debe ser mayor a 0");
-            decimal = r.nextDouble();
-        }
-        while (Double.toString(decimal).matches("^-?[0-9]+([\\.,][0-9]{1," + decimal + "})?$") == false) {
-            System.out.println("Vuelva a ingresar el NUMERO");
-            decimal = r.nextDouble();
-        }
-        return decimal;
-    }
-
-    public static String fec(String fecha) {
-        while (fecha.matches("^(0?[1-9]|[12][0-9]|3[01])[\\/](0?[1-9]|1[012])[/\\/](19|20)\\d{2}$") == false) {
-            System.out.println("Ingrese una fecha con formato dd/mm/yyyy");
-            fecha = r.next();
-        }
-        return fecha;
-    }
+    
 
     public static int val_cliente(ArrayList clientes, int pos) {
         while (pos < 0 || pos > clientes.size()) {
