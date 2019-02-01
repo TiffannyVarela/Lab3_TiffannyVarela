@@ -353,25 +353,10 @@ public class Lab3_TiffannyVarela {
                     contrai = r.next();
                     
                     if (valid_empresa(bp, correoi, contrai)==true) {
-                        System.out.println("Proyecto Web\n");
+                        System.out.println("Proyectos\n");
                         for (int i = 0; i < proyectos.size(); i++) {
-                            if (proyectos.get()) {
-                                System.out.println(cn.getPersonas().indexOf(i) + " = " + cn.getPersonas().get(i));
-                            }
-                        }
-                        System.out.println("\n\n");
-                        System.out.println("Proyecto Publicitario\n");
-                        for (int i = 0; i < proyectos.size(); i++) {
-                            if (((Disenador_grafico) cn.getPersonas().get(i)) instanceof Disenador_grafico || ((Fotografo) cn.getPersonas().get(i)) instanceof Fotografo || ((Medios_audiovisuales) cn.getPersonas().get(i)) instanceof Medios_audiovisuales) {
-                                System.out.println(cn.getPersonas().indexOf(i) + " = " + cn.getPersonas().get(i));
-                            }
-                        }
-                        System.out.println("\n\n");
-                        System.out.println("Proyecto Comercial\n");
-                        for (int i = 0; i < proyectos.size(); i++) {
-                            if (((Disenador_grafico) cn.getPersonas().get(i)) instanceof Disenador_grafico || ((Fotografo) cn.getPersonas().get(i)) instanceof Fotografo || ((Medios_audiovisuales) cn.getPersonas().get(i)) instanceof Medios_audiovisuales) {
-                                System.out.println(cn.getPersonas().indexOf(i) + " = " + cn.getPersonas().get(i));
-                            }
+                           
+                                System.out.println(proyectos);
                         }
                         System.out.println("\n\n");
                     } else {
